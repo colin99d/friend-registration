@@ -1,3 +1,4 @@
 {
-  "greeting": "Hello"
+  "welcome": "Welcome to",
+  "langselect": "Select your language"
 }
