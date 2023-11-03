@@ -67,8 +67,8 @@ export default function AddHome() {
           <Input type="email" i18label="email" />
           <Input type="tel" i18label="telephone" />
 
-          <Input i18label="address" placeholder="Street address" />
-          <Input placeholder="Apt, unit, building" />
+          <Input i18label="address" placeholder={t("streetaddress")} />
+          <Input placeholder={t("aptunit")} />
           <Input i18label="city" />
           <Input minLength={5} maxLength={5} type="number" i18label="zipcode" />
           <SubmitButton className="w-full mt-4" value={t("submit")} />

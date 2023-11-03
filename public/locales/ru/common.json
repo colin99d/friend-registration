@@ -1,5 +1,14 @@
 {
   "welcome": "Добро пожаловать в",
   "langselect": "Выберите ваш язык",
-  "information1": "Информация о Доме"
+  "information1": "Информация о Доме",
+  "next": "Следующий",
+  "submit": "Представлять",
+  "email": "Емайл",
+  "telephone": "Телефон",
+  "address": "Адрес",
+  "streetaddress": "Адрес улицы",
+  "aptunit": "Номер",
+  "city": "Город",
+  "zipcode": "Индекс"
 }

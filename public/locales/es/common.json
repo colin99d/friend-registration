@@ -1,5 +1,14 @@
 {
   "welcome": "Bienvenida a",
   "langselect": "Elige tu idioma",
-  "information1": "Información del Hogar"
+  "information1": "Información del Hogar",
+  "next": "Próxima",
+  "submit": "Entregar",
+  "email": "Email",
+  "telephone": "Teléfono",
+  "address": "Dirección",
+  "streetaddress": "Dirección",
+  "aptunit": "Apt, unit, building",
+  "city": "Ciudad",
+  "zipcode": "Código postal"
 }

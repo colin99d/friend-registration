@@ -1,5 +1,14 @@
 {
   "welcome": "Welcome to",
   "langselect": "Select your language",
-  "information1": "Home Information"
+  "information1": "Home Information",
+  "next": "Next",
+  "submit": "Submit",
+  "email": "Email",
+  "telephone": "Telephone",
+  "address": "Address",
+  "streetaddress": "Street address",
+  "aptunit": "Apt, unit, building",
+  "city": "City",
+  "zipcode": "Zip Code"
 }

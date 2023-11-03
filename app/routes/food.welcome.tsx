@@ -41,7 +41,7 @@ export default function Welcome() {
       </div>
       <div className="w-full mt-20 flex flex flex-row-reverse">
         <LinkButton to="/food/add-home" className="w-1/3 mr-4">
-          Next
+          {t("next")}
         </LinkButton>
       </div>
     </div>
