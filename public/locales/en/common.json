@@ -22,5 +22,10 @@
   "aunt": "Aunt",
   "uncle": "Uncle",
   "brother": "Brother",
-  "sister": "Sister"
+  "sister": "Sister",
+  "invalidaddress": "Invalid address",
+  "invalidzip": "Invalid zip code",
+  "invalidcity": "Invalid city",
+  "invalidemail": "Invalid email",
+  "invalidphone": "Invalid phone number"
 }
