@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import type { MetaFunction } from "@remix-run/node";
+import { type MetaFunction } from "@remix-run/node";
+import { useSearchParams } from "@remix-run/react";
 
 import { Button, LinkButton } from "~/components/Buttons";
 
@@ -30,9 +31,12 @@ function LangButton({ language, code }: { language: string; code: string }) {
 
 export default function Welcome() {
   let { t } = useTranslation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const error = searchParams.get("error");
   return (
     <div>
       <h1 className="text-center my-8 text-2xl">{t("welcome")} Grace</h1>
+      {error && <p className="text-center text-red-500">{t(error)}</p>}
       <div className="flex flex-col pt-12 w-full items-center">
         <h2 className="text-xl pb-6">{t("langselect")}</h2>
         <LangButton language="English" code="en" />

@@ -1,9 +1,9 @@
 import { Form, useActionData } from "@remix-run/react";
 import { redirect, json } from "@remix-run/node";
 import type {
+  LoaderFunctionArgs,
   MetaFunction,
   ActionFunctionArgs,
-  LoaderFunctionArgs,
 } from "@remix-run/node";
 import { useTranslation } from "react-i18next";
 import { SubmitButton } from "~/components/Buttons";
@@ -14,6 +14,7 @@ import {
   validateName,
   validateBirthday,
   validateGender,
+  validateRelationship,
   validateInteger,
 } from "~/utils/validators";
 
@@ -22,7 +23,22 @@ interface Errors {
   lastname?: string;
   birthdate?: string;
   gender?: string;
+  relationship?: string;
 }
+
+export const relationships = [
+  "self",
+  "mother",
+  "father",
+  "son",
+  "daughter",
+  "grandson",
+  "granddaughter",
+  "aunt",
+  "uncle",
+  "brother",
+  "sister",
+];
 
 interface ActionData {
   errors?: Errors;
@@ -51,8 +67,10 @@ export async function action({ request, params }: ActionFunctionArgs) {
   const lastName = formData.get("lastname") as string;
   const birthday = formData.get("birthdate") as string;
   const gender = formData.get("gender") as string;
+  const relationshipToOwner = formData.get("relationship") as string;
 
   const errors: Errors = {};
+
   if (!validateInteger(params.home)) {
     return redirect(`/food/welcome?error=100`);
   }
@@ -68,6 +86,9 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!validateGender(gender)) {
     errors.gender = "invalidgender";
   }
+  if (!validateRelationship(relationshipToOwner)) {
+    errors.relationship = "invalidrelationship";
+  }
   if (Object.keys(errors).length > 0) {
     return json({ errors });
   }
@@ -77,9 +98,9 @@ export async function action({ request, params }: ActionFunctionArgs) {
     lastName,
     birthday,
     gender,
-    relationshipToOwner: "self",
+    relationshipToOwner,
     home: parseInt(params.home || ""),
-    owner: true,
+    owner: false,
   });
 
   return redirect(`/food/add-relative/${params.home}`);
@@ -101,6 +122,11 @@ export default function AddOwner() {
             options={["male", "female"]}
             i18label="gender"
             error={errors?.gender}
+          />
+          <I18Select
+            options={relationships}
+            i18label="relationship"
+            error={errors?.relationship}
           />
           <SubmitButton className="w-full mt-4" value={t("submit")} />
         </Form>

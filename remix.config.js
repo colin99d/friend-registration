@@ -6,4 +6,5 @@ export default {
   // publicPath: "/build/",
   // serverBuildPath: "build/index.js",
   serverDependenciesToBundle: ["remix-i18next"],
+  tailwind: true,
 };

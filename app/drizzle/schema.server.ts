@@ -9,8 +9,9 @@ import {
   pgEnum,
 } from "drizzle-orm/pg-core";
 
-export const genderEnum = pgEnum("gender", ["male", "female"]);
-export const relationshipEnum = pgEnum("relationship", [
+export const genders = ["male", "female"];
+export const relationships = [
+  "self",
   "mother",
   "father",
   "son",
@@ -21,7 +22,9 @@ export const relationshipEnum = pgEnum("relationship", [
   "uncle",
   "brother",
   "sister",
-]);
+];
+
+export const genderEnum = pgEnum("gender", genders);
 
 export const homes = pgTable("homes", {
   id: serial("id").primaryKey(),
@@ -45,9 +48,9 @@ export const persons = pgTable("persons", {
   firstName: text("firstName").notNull(),
   lastName: text("lastName").notNull(),
   birthday: date("birthday").notNull(),
-  genderEnum: genderEnum("genderEnum").notNull(),
+  gender: genderEnum("gender").notNull(),
   owner: boolean("owner").notNull(),
-  relationshipToOwner: relationshipEnum("relationshipToOwner").notNull(),
+  relationshipToOwner: text("relationshipToOwner").notNull(),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 });

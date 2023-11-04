@@ -27,5 +27,13 @@
   "invalidzip": "Invalid zip code",
   "invalidcity": "Invalid city",
   "invalidemail": "Invalid email",
-  "invalidphone": "Invalid phone number"
+  "invalidphone": "Invalid phone number",
+  "firstname": "First name",
+  "lastname": "Last name",
+  "birthdate": "Birthdate",
+  "gender": "Gender",
+  "addowner": "Add Owner",
+  "invalidname": "Invalid name",
+  "invalidbirthdate": "Invalid birthdate",
+  "invalidgender": "Invalid gender"
 }

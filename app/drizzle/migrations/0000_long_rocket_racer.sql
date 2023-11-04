@@ -4,12 +4,6 @@ EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
-DO $$ BEGIN
- CREATE TYPE "relationship" AS ENUM('mother', 'father', 'son', 'daughter', 'grandson', 'granddaughter', 'aunt', 'uncle', 'brother', 'sister');
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "homes" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"address" text NOT NULL,
@@ -30,9 +24,9 @@ CREATE TABLE IF NOT EXISTS "persons" (
 	"firstName" text NOT NULL,
 	"lastName" text NOT NULL,
 	"birthday" date NOT NULL,
-	"genderEnum" "gender" NOT NULL,
+	"gender" "gender" NOT NULL,
 	"owner" boolean NOT NULL,
-	"relationshipToOwner" "relationship" NOT NULL,
+	"relationshipToOwner" text NOT NULL,
 	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"updatedAt" timestamp DEFAULT now() NOT NULL
 );

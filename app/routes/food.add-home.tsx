@@ -1,5 +1,3 @@
-import type { InputHTMLAttributes } from "react";
-import clsx from "clsx";
 import { Form, useActionData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import {
@@ -10,6 +8,7 @@ import {
 } from "@remix-run/node";
 import i18next from "~/i18next.server";
 import { SubmitButton } from "~/components/Buttons";
+import { Input } from "~/components/Inputs";
 import { db } from "~/drizzle/config.server";
 import { homes } from "~/drizzle/schema.server";
 import {
@@ -87,39 +86,6 @@ export async function action({ request }: ActionFunctionArgs) {
     .returning({ insertedId: homes.id });
 
   return redirect(`/food/add-owner/${response[0].insertedId}`);
-}
-
-function Input({
-  i18label,
-  type = "text",
-  placeholder,
-  error,
-  ...props
-}: {
-  i18label?: string;
-  type?: "email" | "tel" | "text" | "number";
-  placeholder?: string;
-  error?: string;
-} & InputHTMLAttributes<HTMLInputElement>) {
-  let { t } = useTranslation();
-  return (
-    <div className="my-4">
-      {i18label && (
-        <label className="block" htmlFor={i18label}>
-          {t(i18label)}
-        </label>
-      )}
-      <input
-        type={type}
-        name={i18label}
-        id={i18label}
-        placeholder={placeholder}
-        className={clsx("border-2 border-black block")}
-        {...props}
-      />
-      {error && <p className="text-red-500">{t(error)}</p>}
-    </div>
-  );
 }
 
 export default function AddHome() {

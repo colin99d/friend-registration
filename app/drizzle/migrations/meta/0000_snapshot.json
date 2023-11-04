@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "71a61254-38c2-44ee-b7bf-eb920a4db9c8",
+  "id": "6027deb7-cfb5-4ff6-8d77-c4e0f1bd3760",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "homes": {
@@ -117,8 +117,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "genderEnum": {
-          "name": "genderEnum",
+        "gender": {
+          "name": "gender",
           "type": "gender",
           "primaryKey": false,
           "notNull": true
@@ -131,7 +131,7 @@
         },
         "relationshipToOwner": {
           "name": "relationshipToOwner",
-          "type": "relationship",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -176,21 +176,6 @@
       "values": {
         "male": "male",
         "female": "female"
-      }
-    },
-    "relationship": {
-      "name": "relationship",
-      "values": {
-        "mother": "mother",
-        "father": "father",
-        "son": "son",
-        "daughter": "daughter",
-        "grandson": "grandson",
-        "granddaughter": "granddaughter",
-        "aunt": "aunt",
-        "uncle": "uncle",
-        "brother": "brother",
-        "sister": "sister"
       }
     }
   },
