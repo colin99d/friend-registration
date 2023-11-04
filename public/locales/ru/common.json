@@ -27,5 +27,15 @@
   "invalidzip": "Неверный индекс",
   "invalidcity": "Неверный город",
   "invalidemail": "Неверная электронная почта",
-  "invalidphone": "Неверный телефон"
+  "invalidphone": "Неверный телефон",
+  "firstname": "Имя",
+  "lastname": "Фамилия",
+  "birthdate": "Дата рождения",
+  "gender": "Пол",
+  "addowner": "Добавить владельца",
+  "adddependent": "Добавить зависимого",
+  "invalidfirstname": "Неверная имя",
+  "invalidlastname": "Неверная фамилия",
+  "invalidbirthdate": "Неверная дата рождения",
+  "invalidgender": "Неверный пол"
 }

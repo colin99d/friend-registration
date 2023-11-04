@@ -33,7 +33,9 @@
   "birthdate": "Birthdate",
   "gender": "Gender",
   "addowner": "Add Owner",
-  "invalidname": "Invalid name",
+  "adddependent": "Add Dependent",
+  "invalidfirstname": "Invalid first name",
+  "invalidlastname": "Invalid list name",
   "invalidbirthdate": "Invalid birthdate",
   "invalidgender": "Invalid gender"
 }

@@ -1,3 +1,4 @@
+import { eq, and } from "drizzle-orm";
 import { Form, useActionData } from "@remix-run/react";
 import { redirect, json } from "@remix-run/node";
 import type {
@@ -42,6 +43,15 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   if (!validateInteger(params.home)) {
     return redirect(`/food/welcome?error=100`);
   }
+  const homeId = parseInt(params.home || "");
+  // We do not want a second owner added EVER
+  const response = await db
+    .select()
+    .from(persons)
+    .where(and(eq(persons.home, homeId), eq(persons.owner, true)));
+  if (response.length > 0) {
+    return redirect(`/food/add-dependent/${params.home}`);
+  }
   return null;
 }
 
@@ -57,10 +67,10 @@ export async function action({ request, params }: ActionFunctionArgs) {
     return redirect(`/food/welcome?error=100`);
   }
   if (!validateName(firstName)) {
-    errors.firstname = "invalidname";
+    errors.firstname = "invalidfirstname";
   }
   if (!validateName(lastName)) {
-    errors.lastname = "invalidname";
+    errors.lastname = "invalidlastname";
   }
   if (!validateBirthday(birthday)) {
     errors.birthdate = "invalidbirthdate";
@@ -82,7 +92,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
     owner: true,
   });
 
-  return redirect(`/food/add-relative/${params.home}`);
+  return redirect(`/food/add-dependent/${params.home}`);
 }
 
 export default function AddOwner() {

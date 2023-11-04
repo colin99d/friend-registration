@@ -27,5 +27,15 @@
   "invalidzip": "Código postal inválido",
   "invalidcity": "Ciudad inválida",
   "invalidemail": "Email inválido",
-  "invalidphone": "Teléfono inválido"
+  "invalidphone": "Teléfono inválido",
+  "firstname": "Nombre de pila",
+  "lastname": "Apellido",
+  "birthdate": "Fecha de nacimiento",
+  "gender": "Género",
+  "addowner": "Agregar Propietario",
+  "adddependent": "Agregar Dependiente",
+  "invalidfirstname": "Nombre inválido",
+  "invalidlastname": "Apellido inválido",
+  "invalidbirthdate": "Fecha de nacimiento inválida",
+  "invalidgender": "Género inválido"
 }
