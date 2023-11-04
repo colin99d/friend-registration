@@ -7,7 +7,10 @@ import {
   type MetaFunction,
   type ActionFunctionArgs,
 } from "@remix-run/node";
+import i18next from "~/i18next.server";
 import { SubmitButton } from "~/components/Buttons";
+import { db } from "~/drizzle/config.server";
+import { homes } from "~/drizzle/schema.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -21,10 +24,19 @@ export const meta: MetaFunction = () => {
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
-  console.log(formData);
+  const address = formData.get("address");
+  const address2 = formData.get("address2");
+  const city = formData.get("city");
+  const zipCode = formData.get("zipcode");
   const email = formData.get("email");
-  console.log(email);
-  return redirect(`/food/add-owner/${1}`);
+  const phone = formData.get("telephone");
+  const language = await i18next.getLocale(request);
+  const response = await db
+    .insert(homes)
+    .values({ address, address2, city, zipCode, email, phone, language })
+    .returning({ insertedId: homes.id });
+
+  return redirect(`/food/add-owner/${response[0].insertedId}`);
 }
 
 function Input({

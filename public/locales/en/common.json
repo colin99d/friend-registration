@@ -10,5 +10,17 @@
   "streetaddress": "Street address",
   "aptunit": "Apt, unit, building",
   "city": "City",
-  "zipcode": "Zip Code"
+  "zipcode": "Zip Code",
+  "male": "Male",
+  "female": "Female",
+  "mother": "Mother",
+  "father":"Father",
+  "son": "Son",
+  "daughter": "Daughter",
+  "grandson": "Grandson",
+  "granddaughter": "Granddaughter",
+  "aunt": "Aunt",
+  "uncle": "Uncle",
+  "brother": "Brother",
+  "sister": "Sister"
 }
