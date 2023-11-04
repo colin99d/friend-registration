@@ -43,7 +43,6 @@ export const meta: MetaFunction = () => {
 };
 
 export async function action({ request }: ActionFunctionArgs) {
-  let t = await i18next.getFixedT(request);
   const formData = await request.formData();
   const address = formData.get("address") as string;
   const address2 = formData.get("address2") as string;
@@ -56,19 +55,19 @@ export async function action({ request }: ActionFunctionArgs) {
   const errors: Errors = {};
 
   if (!validateAddress(address)) {
-    errors.address = t("invalidaddress");
+    errors.address = "invalidaddress";
   }
   if (!validateCity(city)) {
-    errors.city = t("invalidcity");
+    errors.city = "invalidcity";
   }
   if (!validateZipCode(zipCode)) {
-    errors.zipcode = t("invalidzip");
+    errors.zipcode = "invalidzip";
   }
   if (!validateEmail(email)) {
-    errors.email = t("invalidemail");
+    errors.email = "invalidemail";
   }
   if (!validatePhone(phone)) {
-    errors.phone = t("invalidphone");
+    errors.phone = "invalidphone";
   }
   if (Object.keys(errors).length > 0) {
     return json({ errors });
@@ -118,7 +117,7 @@ function Input({
         className={clsx("border-2 border-black block")}
         {...props}
       />
-      <p>{error}</p>
+      {error && <p className="text-red-500">{t(error)}</p>}
     </div>
   );
 }

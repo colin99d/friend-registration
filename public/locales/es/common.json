@@ -10,5 +10,22 @@
   "streetaddress": "Dirección",
   "aptunit": "Apt, unit, building",
   "city": "Ciudad",
-  "zipcode": "Código postal"
+  "zipcode": "Código postal",
+  "male": "Hombre",
+  "female": "Mujer",
+  "mother": "Madre",
+  "father":"Padre",
+  "son": "Hijo",
+  "daughter": "Hija",
+  "grandson": "Nieto",
+  "granddaughter": "Nieta",
+  "aunt": "Tía",
+  "uncle": "Tío",
+  "brother": "Hermano",
+  "sister": "Hermana",
+  "invalidaddress": "Dirección inválida",
+  "invalidzip": "Código postal inválido",
+  "invalidcity": "Ciudad inválida",
+  "invalidemail": "Email inválido",
+  "invalidphone": "Teléfono inválido"
 }

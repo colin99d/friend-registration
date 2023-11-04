@@ -10,5 +10,22 @@
   "streetaddress": "Улицы",
   "aptunit": "Номер",
   "city": "Город",
-  "zipcode": "Индекс"
+  "zipcode": "Индекс",
+  "male": "Мужчина",
+  "female": "Женщина",
+  "mother": "Мать",
+  "father":"Отец",
+  "son": "Сын",
+  "daughter": "Дочь",
+  "grandson": "Внук",
+  "granddaughter": "Внучка",
+  "aunt": "Тетя",
+  "uncle": "Дядя",
+  "brother": "Брат",
+  "sister": "Сестра",
+  "invalidaddress": "Неверный адрес",
+  "invalidzip": "Неверный индекс",
+  "invalidcity": "Неверный город",
+  "invalidemail": "Неверная электронная почта",
+  "invalidphone": "Неверный телефон"
 }

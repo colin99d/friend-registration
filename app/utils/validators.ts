@@ -23,6 +23,6 @@ export function validateEmail(text: string): boolean {
 }
 
 export function validatePhone(text: string): boolean {
-  const regex_pattern = /^\d{3}-\d{3}-\d{4}$/;
+  const regex_pattern = /^\d{3}-?\d{3}-?\d{4}$/;
   return regex_pattern.test(text);
 }
