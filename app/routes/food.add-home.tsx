@@ -1,3 +1,4 @@
+import { csrf } from "~/utils/csrf.server";
 import { Form, useActionData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import {
@@ -19,6 +20,7 @@ import {
   validatePhone,
 } from "~/utils/validators";
 import Header from "~/components/Header";
+import { AuthenticityTokenInput } from "remix-utils/csrf/react";
 
 interface Errors {
   address?: string;
@@ -43,6 +45,11 @@ export const meta: MetaFunction = () => {
 };
 
 export async function action({ request }: ActionFunctionArgs) {
+  try {
+    await csrf.validate(request);
+  } catch (error) {
+    return redirect("/food/welcome?error=102");
+  }
   const formData = await request.formData();
   const address = formData.get("address") as string;
   const address2 = formData.get("address2") as string;
@@ -98,6 +105,7 @@ export default function AddHome() {
       <Header title={t("information1")} />
       <div className="flex flex-col pt-4 w-full items-center">
         <Form method="post">
+          <AuthenticityTokenInput />
           <Input
             type="email"
             i18label="email"

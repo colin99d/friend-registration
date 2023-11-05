@@ -1,3 +1,4 @@
+import { csrf } from "~/utils/csrf.server";
 import { Form, useActionData } from "@remix-run/react";
 import { redirect, json } from "@remix-run/node";
 import type {
@@ -18,6 +19,7 @@ import {
   validateInteger,
 } from "~/utils/validators";
 import Header from "~/components/Header";
+import { AuthenticityTokenInput } from "remix-utils/csrf/react";
 
 interface Errors {
   firstname?: string;
@@ -64,6 +66,11 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 }
 
 export async function action({ request, params }: ActionFunctionArgs) {
+  try {
+    await csrf.validate(request);
+  } catch (error) {
+    return redirect("/food/welcome?error=102");
+  }
   const formData = await request.formData();
   const firstName = formData.get("firstname") as string;
   const lastName = formData.get("lastname") as string;
@@ -108,7 +115,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   return redirect(`/food/dependents/${params.home}`);
 }
 
-export default function AddOwner() {
+export default function AddDependent() {
   const actionData = useActionData<ActionData>();
   const errors = actionData?.errors;
   let { t } = useTranslation();
@@ -117,6 +124,7 @@ export default function AddOwner() {
       <Header title={t("adddependent")} />
       <div className="flex flex-col pt-4 w-full items-center">
         <Form method="post">
+          <AuthenticityTokenInput />
           <Input i18label="firstname" error={errors?.firstname} />
           <Input i18label="lastname" error={errors?.lastname} />
           <Input type="date" i18label="birthdate" error={errors?.birthdate} />
