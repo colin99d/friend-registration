@@ -3,6 +3,7 @@ import { type MetaFunction } from "@remix-run/node";
 import { useSearchParams } from "@remix-run/react";
 
 import { Button, LinkButton } from "~/components/Buttons";
+import Header from "~/components/Header";
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,7 +36,7 @@ export default function Welcome() {
   const error = searchParams.get("error");
   return (
     <div>
-      <h1 className="text-center my-8 text-2xl">{t("welcome")} Grace</h1>
+      <Header title={t("welcome") + " Grace"} />
       {error && <p className="text-center text-red-500">{t(error)}</p>}
       <div className="flex flex-col pt-12 w-full items-center">
         <h2 className="text-xl pb-6">{t("langselect")}</h2>

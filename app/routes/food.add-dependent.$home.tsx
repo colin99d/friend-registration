@@ -17,6 +17,7 @@ import {
   validateRelationship,
   validateInteger,
 } from "~/utils/validators";
+import Header from "~/components/Header";
 
 interface Errors {
   firstname?: string;
@@ -103,7 +104,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
     owner: false,
   });
 
-  return redirect(`/food/add-relative/${params.home}`);
+  return redirect(`/food/dependents/${params.home}`);
 }
 
 export default function AddOwner() {
@@ -112,7 +113,7 @@ export default function AddOwner() {
   let { t } = useTranslation();
   return (
     <div>
-      <h1 className="text-center my-8 text-2xl">{t("adddependent")}</h1>
+      <Header title={t("adddependent")} />
       <div className="flex flex-col pt-12 w-full items-center">
         <Form method="post">
           <Input i18label="firstname" error={errors?.firstname} />

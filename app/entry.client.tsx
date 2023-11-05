@@ -48,3 +48,10 @@ if (window.requestIdleCallback) {
   // https://caniuse.com/requestidlecallback
   window.setTimeout(hydrate, 1);
 }
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    // we will register it after the page complete the load
+    navigator.serviceWorker.register("/sw.js");
+  });
+}

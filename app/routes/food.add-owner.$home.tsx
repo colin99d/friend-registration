@@ -17,6 +17,7 @@ import {
   validateGender,
   validateInteger,
 } from "~/utils/validators";
+import Header from "~/components/Header";
 
 interface Errors {
   firstname?: string;
@@ -46,11 +47,11 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   const homeId = parseInt(params.home || "");
   // We do not want a second owner added EVER
   const response = await db
-    .select()
+    .select({ id: persons.id })
     .from(persons)
     .where(and(eq(persons.home, homeId), eq(persons.owner, true)));
   if (response.length > 0) {
-    return redirect(`/food/add-dependent/${params.home}`);
+    return redirect(`/food/dependents/${params.home}`);
   }
   return null;
 }
@@ -92,7 +93,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
     owner: true,
   });
 
-  return redirect(`/food/add-dependent/${params.home}`);
+  return redirect(`/food/dependents/${params.home}`);
 }
 
 export default function AddOwner() {
@@ -101,7 +102,7 @@ export default function AddOwner() {
   let { t } = useTranslation();
   return (
     <div>
-      <h1 className="text-center my-8 text-2xl">{t("addowner")}</h1>
+      <Header title={t("addowner")} />
       <div className="flex flex-col pt-12 w-full items-center">
         <Form method="post">
           <Input i18label="firstname" error={errors?.firstname} />

@@ -18,6 +18,7 @@ import {
   validateEmail,
   validatePhone,
 } from "~/utils/validators";
+import Header from "~/components/Header";
 
 interface Errors {
   address?: string;
@@ -94,7 +95,7 @@ export default function AddHome() {
   let { t } = useTranslation();
   return (
     <div>
-      <h1 className="text-center my-8 text-2xl">{t("information1")}</h1>
+      <Header title={t("information1")} />
       <div className="flex flex-col pt-12 w-full items-center">
         <Form method="post">
           <Input
