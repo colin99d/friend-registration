@@ -54,6 +54,7 @@ export default function Welcome() {
         <LangButton language="English" code="en" />
         <LangButton language="Español" code="es" />
         <LangButton language="Русский" code="ru" />
+        <LangButton language="Türkçe" code="tr" />
       </div>
       <div className="w-full mt-20 flex flex flex-row-reverse">
         <LinkButton to="/food/add-home" className="w-1/3 mr-4">
