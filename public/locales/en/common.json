@@ -45,5 +45,7 @@
   "completionmessage": "Your information has been submitted. Please show your phone to a volunteer.",
   "wife": "Wife",
   "husband": "Husband",
-  "unexpectederror": "An unexpected error occurred. Please try again later."
+  "unexpectederror": "An unexpected error occurred. Please try again later.",
+  "invalidrelationship": "Invalid relationship",
+  "relationship": "Relationship"
 }

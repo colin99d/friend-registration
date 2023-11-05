@@ -38,5 +38,14 @@
   "invalidfirstname": "Nombre inválido",
   "invalidlastname": "Apellido inválido",
   "invalidbirthdate": "Fecha de nacimiento inválida",
-  "invalidgender": "Género inválido"
+  "invalidgender": "Género inválido",
+  "dependentexplanation": "Los dependientes son personas que viven en la misma casa que usted. Deben estar relacionados con usted o su cónyuge, y un generador por encima o por debajo de usted. También se pueden incluir nietos si usted es el cuidador principal.",
+  "anotherdependent": "Agregar dependiente",
+  "completed": "Éxito",
+  "completionmessage": "Su información ha sido enviada. Muéstrele su teléfono a un voluntario.",
+  "wife": "Esposa",
+  "husband": "Esposo",
+  "unexpectederror": "Se produjo un error inesperado. Vuelva a intentarlo más tarde.",
+  "invalidrelationship": "Relación no válida",
+  "relationship": "Relación"
 }

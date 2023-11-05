@@ -6,7 +6,7 @@ export default function Header({
   description?: string;
 }) {
   return (
-    <div className="my-8">
+    <div className="my-6">
       <h1 className="text-center text-2xl mb-2">{title}</h1>
       {description && <p className="mx-4">{description}</p>}
     </div>
