@@ -12,6 +12,8 @@ import {
 export const genders = ["male", "female"];
 export const relationships = [
   "self",
+  "husband",
+  "wife",
   "mother",
   "father",
   "son",

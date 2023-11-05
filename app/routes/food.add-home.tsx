@@ -96,7 +96,7 @@ export default function AddHome() {
   return (
     <div>
       <Header title={t("information1")} />
-      <div className="flex flex-col pt-12 w-full items-center">
+      <div className="flex flex-col pt-4 w-full items-center">
         <Form method="post">
           <Input
             type="email"

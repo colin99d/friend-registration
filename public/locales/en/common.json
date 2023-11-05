@@ -42,5 +42,8 @@
   "dependentexplanation": "Dependents are people who live in the same home as you. They must be related to you or your spouse, and one generator above or below you. Grandchildren can also be included if you are the primary care taker.",
   "anotherdependent": "Add dependent",
   "completed": "Success",
-  "completionmessage": "Your information has been submitted. Please show your phone to a volunteer."
+  "completionmessage": "Your information has been submitted. Please show your phone to a volunteer.",
+  "wife": "Wife",
+  "husband": "Husband",
+  "unexpectederror": "An unexpected error occurred. Please try again later."
 }

@@ -6,7 +6,9 @@ import { useTranslation } from "react-i18next";
 import { db } from "~/drizzle/config.server";
 import { persons, homes } from "~/drizzle/schema.server";
 import { validateInteger } from "~/utils/validators";
+import { checkZipCode } from "~/utils/helpers";
 import Header from "~/components/Header";
+import clsx from "clsx";
 
 export const meta: MetaFunction = () => {
   return [
@@ -32,15 +34,25 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
     .from(persons)
     .where(eq(persons.home, homeId));
   const home = await db
-    .select({ zipCode: homes.zipCode })
+    .select({
+      zipCode: homes.zipCode,
+      address: homes.address,
+      city: homes.city,
+    })
     .from(homes)
     .where(eq(homes.id, homeId));
 
-  return json({ residents, home: home[0] });
+  if (residents.length === 0 || home.length === 0) {
+    return redirect(`/food/welcome?error=101`);
+  }
+
+  const zipColor = checkZipCode(home[0].zipCode);
+
+  return json({ residents, home: home[0], zipColor });
 }
 
 export default function AddOwner() {
-  const { residents, home } = useLoaderData<typeof loader>();
+  const { residents, home, zipColor } = useLoaderData<typeof loader>();
   let { t } = useTranslation();
   const points = (residents.length - 1) * 5 + 15;
   const owner = residents.find((item) => item.owner === true);
@@ -50,17 +62,36 @@ export default function AddOwner() {
       <table className="border-black border-4 w-3/4 mx-auto">
         <tbody>
           <tr className="border-black border-2">
-            <td>Name</td>
+            <td className="border-black border-2">Name</td>
             <td>
               {owner?.firstName} {owner?.lastName}
             </td>
           </tr>
           <tr className="border-black border-2">
-            <td>Zip Code</td>
-            <td>{home.zipCode}</td>
+            <td className="border-black border-2">Address</td>
+            <td>{home.address}</td>
           </tr>
           <tr className="border-black border-2">
-            <td>Points</td>
+            <td className="border-black border-2">City</td>
+            <td>{home.city}</td>
+          </tr>
+          <tr className="border-black border-2">
+            <td className="border-black border-2">Zip Code</td>
+            <td>
+              <div className="flex">
+                <div
+                  className={clsx("aspect-square rounded-full h-6 mr-2", {
+                    "bg-red-500": zipColor === "red",
+                    "bg-yellow-500": zipColor === "yellow",
+                    "bg-green-500": zipColor === "green",
+                  })}
+                ></div>
+                {home.zipCode}
+              </div>
+            </td>
+          </tr>
+          <tr className="border-black border-2">
+            <td className="border-black border-2">Points</td>
             <td>{points}</td>
           </tr>
         </tbody>

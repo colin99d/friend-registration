@@ -103,7 +103,7 @@ export default function AddOwner() {
   return (
     <div>
       <Header title={t("addowner")} />
-      <div className="flex flex-col pt-12 w-full items-center">
+      <div className="flex flex-col pt-4 w-full items-center">
         <Form method="post">
           <Input i18label="firstname" error={errors?.firstname} />
           <Input i18label="lastname" error={errors?.lastname} />

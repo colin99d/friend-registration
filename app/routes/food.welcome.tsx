@@ -30,6 +30,17 @@ function LangButton({ language, code }: { language: string; code: string }) {
   );
 }
 
+function ErrorBlock({ error }: { error?: null | string }) {
+  let { t } = useTranslation();
+  if (error === undefined || error === null) return null;
+  return (
+    <div className="bg-red-200 w-3/4 mx-auto">
+      <p className="text-center">{t("unexpectederror")}</p>
+      <p className="text-center">Error code: {error}</p>
+    </div>
+  );
+}
+
 export default function Welcome() {
   let { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,8 +48,8 @@ export default function Welcome() {
   return (
     <div>
       <Header title={t("welcome") + " Grace"} />
-      {error && <p className="text-center text-red-500">{t(error)}</p>}
-      <div className="flex flex-col pt-12 w-full items-center">
+      <ErrorBlock error={error} />
+      <div className="flex flex-col pt-4 w-full items-center">
         <h2 className="text-xl pb-6">{t("langselect")}</h2>
         <LangButton language="English" code="en" />
         <LangButton language="Español" code="es" />

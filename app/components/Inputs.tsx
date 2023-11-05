@@ -1,5 +1,29 @@
 import type { InputHTMLAttributes } from "react";
 import { useTranslation } from "react-i18next";
+import clsx from "clsx";
+
+function InputBase({
+  children,
+  i18label,
+  error,
+}: {
+  children: JSX.Element;
+  i18label?: string;
+  error?: string;
+}) {
+  let { t } = useTranslation();
+  return (
+    <div className={clsx({ "my-2": error, "my-4": !error })}>
+      {i18label && (
+        <label className="block" htmlFor={i18label}>
+          {t(i18label)}
+        </label>
+      )}
+      {children}
+      {error && <p className="text-red-500">{t(error)}</p>}
+    </div>
+  );
+}
 
 export function Input({
   i18label,
@@ -13,24 +37,20 @@ export function Input({
   placeholder?: string;
   error?: string;
 } & InputHTMLAttributes<HTMLInputElement>) {
-  let { t } = useTranslation();
   return (
-    <div className="my-4">
-      {i18label && (
-        <label className="block" htmlFor={i18label}>
-          {t(i18label)}
-        </label>
-      )}
+    <InputBase i18label={i18label} error={error}>
       <input
         type={type}
         name={i18label}
         id={i18label}
         placeholder={placeholder}
-        className="w-full border-2 border-black block"
+        className={clsx("border-2 block w-full", {
+          "border-black": !error,
+          "border-red-500": error,
+        })}
         {...props}
       />
-      {error && <p className="text-red-500">{t(error)}</p>}
-    </div>
+    </InputBase>
   );
 }
 
@@ -46,16 +66,14 @@ export function I18Select({
 } & InputHTMLAttributes<HTMLSelectElement>) {
   let { t } = useTranslation();
   return (
-    <div className="my-4">
-      {i18label && (
-        <label className="block" htmlFor={i18label}>
-          {t(i18label)}
-        </label>
-      )}
+    <InputBase i18label={i18label} error={error}>
       <select
         name={i18label}
         id={i18label}
-        className="border-2 border-black block w-full"
+        className={clsx("border-2 block w-full", {
+          "border-black": !error,
+          "border-red-500": error,
+        })}
         {...props}
       >
         <option value=""></option>
@@ -65,8 +83,6 @@ export function I18Select({
           </option>
         ))}
       </select>
-
-      {error && <p className="text-red-500">{t(error)}</p>}
-    </div>
+    </InputBase>
   );
 }
